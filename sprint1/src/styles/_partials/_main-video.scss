@@ -1,0 +1,66 @@
+.video {
+  font-size: 0;
+  line-height: 0;
+
+  &__playing {
+    width: 100%;
+  }
+  &__info {
+    margin: 2rem 1rem 0 1rem;
+    * {
+      margin: 0;
+    }
+  }
+  &__title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-family: "avenir-bold";
+    margin-bottom: 1rem;
+  }
+  &__channel-timestamp {
+    display: flex;
+    margin-bottom: 2rem;
+  }
+  &__views-likes {
+    display: flex;
+  }
+  &__channel {
+    font-family: "avenir-demi";
+  }
+  &__timestamp {
+    margin-left: 0.5rem;
+    color: $silver;
+  }
+  &__views-likes {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $mercury;
+    img {
+      margin-right: 0.5rem;
+    }
+  }
+  &__views {
+    display: flex;
+    align-content: center;
+  }
+  &__likes {
+    display: flex;
+    align-content: center;
+    margin-left: 2rem;
+  }
+  &__description {
+    @include labels-m;
+    font-size: 0.754rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@include tablet {
+  .video {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    &__playing {
+      width: 43.75rem;
+    }
+  }
+}
