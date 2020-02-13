@@ -1,9 +1,10 @@
 import React from "react";
+import uuid from "uuid/v1";
 
 export default function videoList(props) {
   const videoList = props.videoList.map(video => {
     return (
-      <div className="video-list__single">
+      <div key={uuid()} className="video-list__single">
         <div className="video-list__single-img">
           <img src={video.image} alt="video-list-img" />
         </div>

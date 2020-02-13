@@ -1,10 +1,10 @@
 import React from "react";
 import faceImage from "../assets/Images/face.png";
 
-export default function conversation() {
+export default function conversation(props) {
   return (
     <div className="conv">
-      <h1 className="conv__title">Comments</h1>
+      <h1 className="conv__title">{`${props.comments.length} Comments`}</h1>
       <form className="conv__join" name="comment-form">
         <div className="conv__join-left">
           <img src={faceImage} alt="user-face" />

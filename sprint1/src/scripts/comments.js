@@ -1,10 +1,10 @@
 import React from "react";
-
+import uuid from "uuid/v1";
 
 export default function comments(props) {
   const commentList = props.comments.map(com => {
     return (
-      <div className="comment">
+      <div key={uuid()} className="comment">
         <div className="comment__left">
           <img src={com.img} alt="user-face" />
         </div>

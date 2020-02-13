@@ -40,12 +40,11 @@
 
 @include tablet {
   .header {
-    height: 5rem;
+    margin: 1rem 1.5rem;
     display: flex;
     flex: 1;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
 
     &__form {
       display: flex;
@@ -74,11 +73,6 @@
 
 @include desk {
   .header {
-    height: 5rem;
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 11.25rem;
+    margin: 1rem 11.25rem;
   }
 }

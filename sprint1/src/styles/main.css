@@ -102,7 +102,7 @@ match the mockup image.
 
 @media only screen and (min-width: 768px) {
   .header {
-    height: 5rem;
+    margin: 1rem 1.5rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -115,7 +115,6 @@ match the mockup image.
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    padding: 1rem 1.5rem;
   }
   .header__form {
     display: -webkit-box;
@@ -155,20 +154,7 @@ match the mockup image.
 
 @media only screen and (min-width: 1440px) {
   .header {
-    height: 5rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 1rem 11.25rem;
+    margin: 1rem 11.25rem;
   }
 }
 
@@ -277,8 +263,15 @@ button:hover {
   }
 }
 
+@media only screen and (min-width: 1440px) {
+  .comment {
+    padding-left: 0;
+  }
+}
+
 .conv {
   padding: 2.5rem 1rem 1.5rem 1rem;
+  border-bottom: 1px solid #e1e1e1;
 }
 
 .conv * {
@@ -299,7 +292,6 @@ button:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border-bottom: 1px solid #e1e1e1;
 }
 
 .conv__join-left {
@@ -349,7 +341,7 @@ button:hover {
 
 @media only screen and (min-width: 768px) {
   .conv {
-    padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+    padding: 4rem 1.5rem 0rem 1.5rem;
   }
   .conv__join {
     padding-bottom: 1.5rem;
@@ -382,13 +374,34 @@ button:hover {
   }
 }
 
+@media only screen and (min-width: 1440px) {
+  .conv {
+    padding-left: 0;
+    padding-right: 2rem;
+  }
+  .conv__join {
+    width: 100%;
+  }
+  .conv__join-right-title {
+    margin-left: 0.3rem;
+  }
+  .conv__join-right-input {
+    margin-left: 0.3rem;
+  }
+  .conv__join-right-button {
+    margin-right: 0;
+  }
+}
+
 .video {
   font-size: 0;
   line-height: 0;
+  height: 57.1875vw;
 }
 
 .video__playing {
   width: 100%;
+  height: 100%;
 }
 
 .video__info {
@@ -404,6 +417,11 @@ button:hover {
   line-height: 2rem;
   font-family: "avenir-bold";
   margin-bottom: 1rem;
+}
+
+.video__details {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e1e1e1;
 }
 
 .video__channel-timestamp {
@@ -426,11 +444,6 @@ button:hover {
 .video__timestamp {
   margin-left: 0.5rem;
   color: #afafaf;
-}
-
-.video__views-likes {
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #e1e1e1;
 }
 
 .video__views-likes img {
@@ -463,6 +476,8 @@ button:hover {
 
 @media only screen and (min-width: 768px) {
   .video {
+    height: 52.085vw;
+    padding: 0 2.125rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -471,17 +486,64 @@ button:hover {
             justify-content: center;
     background-color: black;
   }
-  .video__playing {
-    width: 43.75rem;
+  .video__info {
+    margin: 3rem 1.5rem 0 1.5rem;
+  }
+  .video__title {
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 1.5rem;
+  }
+  .video__details {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .video__details * {
+    margin: 0;
+  }
+  .video__timestamp {
+    margin-left: 0.5rem;
+  }
+  .video__likes {
+    margin-left: 1.5rem;
+  }
+  .video__description {
+    margin-top: 2.5rem;
+    width: 63%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .video {
+    height: 37.5vw;
+    padding: 0 15.5rem;
+  }
+  .video__info {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .video__details {
+    padding-right: 2rem;
+  }
+  .video__description {
+    font-size: 14px;
+    line-height: 18px;
+    width: 74%;
+    line-height: 1.5rem;
   }
 }
 
 .video-list {
-  margin: 0 1rem;
+  margin: 2.5rem 1rem;
 }
 
 .video-list__heading {
-  margin: 2.5rem 0;
+  margin: 0;
+  margin-bottom: 2.5rem;
   font-size: 14px;
   line-height: 18px;
   font-family: "avenir-demi";
@@ -500,15 +562,9 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
 }
 
 .video-list__single-img {
-  -webkit-box-flex: 0.44117;
-      -ms-flex: 0.44117;
-          flex: 0.44117;
   width: 120px;
   height: 70px;
   font-size: 0;
@@ -518,13 +574,15 @@ button:hover {
 .video-list__single-img img {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 4px;
 }
 
 .video-list__single-info {
-  -webkit-box-flex: 0.55883;
-      -ms-flex: 0.55883;
-          flex: 0.55883;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   margin-left: 1rem;
 }
 
@@ -544,6 +602,48 @@ button:hover {
   margin-top: 0.5rem;
   font-size: 13px;
   line-height: 18px;
+}
+
+@media only screen and (min-width: 768px) {
+  .video-list {
+    margin: 2.5rem 1.5rem;
+    width: 50%;
+  }
+  .video-list__single-img img {
+    width: 100%;
+  }
+  .video-list__single-info-title {
+    padding-right: 1.7rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .video-list {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .desktop-view {
+    margin: 0 11.25rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  .desktop-view__left {
+    -webkit-box-flex: 0.659259;
+        -ms-flex: 0.659259;
+            flex: 0.659259;
+    border-right: 1px solid #e1e1e1;
+  }
+  .desktop-view__right {
+    -webkit-box-flex: 0.340751;
+        -ms-flex: 0.340751;
+            flex: 0.340751;
+  }
 }
 
 body {

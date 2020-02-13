@@ -60,3 +60,9 @@
     }
   }
 }
+
+@include desk {
+  .comment {
+    padding-left: 0;
+  }
+}

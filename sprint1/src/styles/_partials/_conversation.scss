@@ -1,5 +1,6 @@
 .conv {
   padding: 2.5rem 1rem 1.5rem 1rem;
+  border-bottom: 1px solid $mercury;
   * {
     margin: 0;
   }
@@ -11,7 +12,6 @@
   &__join {
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid $mercury;
     &-left {
       transform: translateY(1.5rem);
       font-size: 0;
@@ -52,7 +52,7 @@
 
 @include tablet {
   .conv {
-    padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+    padding: 4rem 1.5rem 0rem 1.5rem;
     &__join {
       padding-bottom: 1.5rem;
       &-right {
@@ -70,6 +70,27 @@
         &-button {
           margin: 0 2.5rem 0 0;
           flex: 0.2749;
+        }
+      }
+    }
+  }
+}
+
+@include desk {
+  .conv {
+    padding-left: 0;
+    padding-right: 2rem;
+    &__join {
+      width: 100%;
+      &-right {
+        &-title {
+          margin-left: 0.3rem;
+        }
+        &-input {
+          margin-left: 0.3rem;
+        }
+        &-button {
+          margin-right: 0;
         }
       }
     }

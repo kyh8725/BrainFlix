@@ -106,10 +106,16 @@ export default function app() {
     <>
       <Header />
       <Video mainVideo={mainVideo} />
-      <VideoInfo mainVideo={mainVideo} />
-      <Conversation />
-      <Comments comments={comments} />
-      <VideoList videoList={sideVideos} />
+      <div className="desktop-view">
+        <div className="desktop-view__left">
+          <VideoInfo mainVideo={mainVideo} />
+          <Conversation comments={comments} />
+          <Comments comments={comments} />
+        </div>
+        <div className="desktop-view__right">
+          <VideoList videoList={sideVideos} />
+        </div>
+      </div>
     </>
   );
 }
