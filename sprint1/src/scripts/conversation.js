@@ -2,10 +2,18 @@ import React from "react";
 import faceImage from "../assets/Images/face.png";
 
 export default function conversation(props) {
+  // const clickHandler = event => {
+  //   event.preventDefault();
+  // };
   return (
     <div className="conv">
-      <h1 className="conv__title">{`${props.comments.length} Comments`}</h1>
-      <form className="conv__join" name="comment-form">
+      <h1 className="conv__title">{`${props.count} Comments`}</h1>
+      <form
+        id="comments"
+        onSubmit={props.onSubmit}
+        className="conv__join"
+        name="comment-form"
+      >
         <div className="conv__join-left">
           <img src={faceImage} alt="user-face" />
         </div>
@@ -13,7 +21,7 @@ export default function conversation(props) {
           <p className="conv__join-right-title">JOIN THE CONVERSATION</p>
           <input
             className="conv__join-right-input"
-            name="comment-form"
+            name="input"
             placeholder="your comments"
           ></input>
           <button className="conv__join-right-button">COMMENT</button>

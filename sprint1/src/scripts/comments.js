@@ -1,5 +1,6 @@
 import React from "react";
 import uuid from "uuid/v1";
+import formatDate from "./utils";
 
 export default function comments(props) {
   const commentList = props.comments.map(com => {
@@ -11,7 +12,7 @@ export default function comments(props) {
         <div className="comment__right">
           <div className="comment__right-top">
             <p className="comment__right-top-name">{com.name}</p>
-            <p className="comment__right-top-date">{com.date}</p>
+            <p className="comment__right-top-date">{formatDate(com.date)}</p>
           </div>
           <div className="comment__paragraph">
             <p className="comment__paragraph-text">{com.comment}</p>
