@@ -113,15 +113,20 @@ class App extends React.Component {
      * create a new comment object and put it into the comment array.
      * clear the comment input and update the state.commentNumber
      */
-    const newComment = {
-      name: "Daniel Kim",
-      date: JSON.stringify(new Date().getTime()),
-      comment: event.target.input.value,
-      img: "/Images/face.png"
-    };
-    comments.unshift(newComment);
-    event.target.reset();
-    this.setState({ commentNumber: comments.length });
+    const newComments = event.target.input.value;
+    if (newComments !== "") {
+      const newComment = {
+        name: "Daniel Kim",
+        date: JSON.stringify(new Date().getTime()),
+        comment: newComments,
+        img: "/Images/face.png"
+      };
+      comments.unshift(newComment);
+      event.target.reset();
+      this.setState({ commentNumber: comments.length });
+    } else {
+      window.alert("Please write your comments");
+    }
   };
 
   render() {

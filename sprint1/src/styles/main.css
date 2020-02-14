@@ -647,12 +647,18 @@ button:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    width: 100%;
+    margin-left: 1rem;
   }
   .control__progressBar {
     margin-left: 1rem;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
   .control__time {
     margin-left: 1rem;
+    margin-right: 1rem;
     display: inline;
     color: white;
   }

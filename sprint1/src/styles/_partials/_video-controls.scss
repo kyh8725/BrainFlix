@@ -62,12 +62,16 @@
     bottom: 4%;
     &__progress {
       display: flex;
+      width: 100%;
+      margin-left: 1rem;
     }
     &__progressBar {
       margin-left: 1rem;
+      justify-content: space-between;
     }
     &__time {
       margin-left: 1rem;
+      margin-right: 1rem;
       display: inline;
       color: white;
     }
