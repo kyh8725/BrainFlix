@@ -556,13 +556,13 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0 1rem;
+  padding: 0 1rem;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   position: absolute;
-  width: 90%;
-  bottom: 0.5rem;
+  width: 100%;
+  bottom: 5%;
 }
 
 .control__playPause {
@@ -578,9 +578,7 @@ button:hover {
   height: 2rem;
   border-radius: 0.2rem;
   background-color: rgba(0, 0, 0, 0.5);
-  -webkit-box-flex: 0.2;
-      -ms-flex: 0.2;
-          flex: 0.2;
+  width: 4rem;
 }
 
 .control__playPause img {
@@ -600,9 +598,7 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-flex: 0.6;
-      -ms-flex: 0.6;
-          flex: 0.6;
+  width: 100%;
   margin-left: 0.5rem;
 }
 
@@ -614,10 +610,12 @@ button:hover {
   display: inline-block;
 }
 
+.control__time {
+  display: none;
+}
+
 .control__volumeScreen {
-  -webkit-box-flex: 0.3;
-      -ms-flex: 0.3;
-          flex: 0.3;
+  width: 6rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -642,8 +640,37 @@ button:hover {
 
 @media only screen and (min-width: 768px) {
   .control {
-    width: 85%;
-    left: 3rem;
+    padding: 0 6.109%;
+    bottom: 4%;
+  }
+  .control__progress {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .control__progressBar {
+    margin-left: 1rem;
+  }
+  .control__time {
+    margin-left: 1rem;
+    display: inline;
+    color: white;
+  }
+  .control__volumeScreen {
+    margin-left: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .control {
+    padding: 0 18.25%;
+    bottom: 3%;
+  }
+  .control__progressBar {
+    margin-left: 1rem;
+  }
+  .control__volumeScreen {
+    margin-left: 1rem;
   }
 }
 

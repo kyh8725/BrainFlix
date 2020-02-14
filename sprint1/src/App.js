@@ -125,28 +125,29 @@ class App extends React.Component {
   };
 
   render() {
-    //divs added for styling purposes in desktop view.
     return (
       <>
         <Header />
-        <div className="mainVideo-container">
-          <Video mainVideo={mainVideo} />
-          <VideoControls />
-        </div>
-        <div className="desktop-view">
-          <div className="desktop-view__left">
-            <VideoInfo mainVideo={mainVideo} />
-            <Conversation
-              count={this.state.commentNumber}
-              onSubmit={this.clickHandler}
-              comments={comments}
-            />
-            <Comments comments={comments} />
+        <main>
+          <div className="mainVideo-container">
+            <Video mainVideo={mainVideo} />
+            <VideoControls mainVideo={mainVideo} />
           </div>
-          <div className="desktop-view__right">
-            <VideoList videoList={sideVideos} />
+          <div className="desktop-view">
+            <div className="desktop-view__left">
+              <VideoInfo mainVideo={mainVideo} />
+              <Conversation
+                count={this.state.commentNumber}
+                onSubmit={this.clickHandler}
+                comments={comments}
+              />
+              <Comments comments={comments} />
+            </div>
+            <div className="desktop-view__right">
+              <VideoList videoList={sideVideos} />
+            </div>
           </div>
-        </div>
+        </main>
       </>
     );
   }
