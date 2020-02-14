@@ -1,6 +1,7 @@
 import React from "react";
 import uuid from "uuid/v1";
 import formatDate from "./utils";
+//import faceImage from "../assets/Images/face.png";
 
 export default function comments(props) {
   const commentList = props.comments.map(com => {

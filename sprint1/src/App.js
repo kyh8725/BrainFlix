@@ -7,8 +7,9 @@ import VideoInfo from "./scripts/videoInfo";
 import VideoList from "./scripts/videoList";
 import "./styles/main.css";
 import VideoControls from "./scripts/videoControls";
+//import axios from "axios";
 
-//comment data
+// //comment data
 const comments = [
   {
     name: "Micheal Lyons",
@@ -100,30 +101,54 @@ const mainVideo = {
   timestamp: "1545120000000",
   comments: "[]"
 };
-
 class App extends React.Component {
   state = {
-    commentNumber: comments.length
+    commentCount: comments.length
+    //comments: [],
+    //userName: "Daniel Kim"
   };
 
-  //event handler for comment button
+  // componentDidMount() {
+  //   axios
+  //     .get("https://project-1-api.herokuapp.com/comments?api_key=Daniel")
+  //     .then(response => {
+  //       this.setState({ comments: response.data });
+  //     });
+  // }
+
   clickHandler = event => {
     event.preventDefault();
+
+    // let newComment = event.target.input.value;
+    // if (newComment !== "") {
+    //   axios
+    //     .post("https://project-1-api.herokuapp.com/comments?api_key=Daniel", {
+    //       name: this.state.userName,
+    //       comment: newComment
+    //     })
+    //     .then(response => {
+    //       console.log(response.data);
+    //       this.setState({ comments: response.data });
+    //     });
+    // } else {
+    //   window.alert("Please write your comments");
+    // }
+
     /**
      * create a new comment object and put it into the comment array.
      * clear the comment input and update the state.commentNumber
      */
     const newComments = event.target.input.value;
     if (newComments !== "") {
-      const newComment = {
+      const newCommentObject = {
         name: "Daniel Kim",
         date: JSON.stringify(new Date().getTime()),
         comment: newComments,
         img: "/Images/face.png"
       };
-      comments.unshift(newComment);
+      comments.unshift(newCommentObject);
       event.target.reset();
-      this.setState({ commentNumber: comments.length });
+      this.setState({ commentCount: comments.length });
     } else {
       window.alert("Please write your comments");
     }
@@ -142,9 +167,8 @@ class App extends React.Component {
             <div className="desktop-view__left">
               <VideoInfo mainVideo={mainVideo} />
               <Conversation
-                count={this.state.commentNumber}
+                count={this.state.commentCount}
                 onSubmit={this.clickHandler}
-                comments={comments}
               />
               <Comments comments={comments} />
             </div>
