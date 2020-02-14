@@ -2,9 +2,6 @@ import React from "react";
 import faceImage from "../assets/Images/face.png";
 
 export default function conversation(props) {
-  // const clickHandler = event => {
-  //   event.preventDefault();
-  // };
   return (
     <div className="conv">
       <h1 className="conv__title">{`${props.count} Comments`}</h1>

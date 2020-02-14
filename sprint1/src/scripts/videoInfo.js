@@ -1,6 +1,7 @@
 import React from "react";
 import viewIcon from "../assets/Icons/SVG/Icon-views.svg";
 import likeIcon from "../assets/Icons/SVG/Icon-likes.svg";
+import formatDate from "./utils";
 
 export default function videoInfo(props) {
   return (
@@ -9,7 +10,9 @@ export default function videoInfo(props) {
       <div className="video__details">
         <div className="video__channel-timestamp">
           <p className="video__channel">{props.mainVideo.channel}</p>
-          <p className="video__timestamp">{props.mainVideo.timestamp}</p>
+          <p className="video__timestamp">
+            {formatDate(props.mainVideo.timestamp)}
+          </p>
         </div>
         <div className="video__views-likes">
           <p className="video__views">

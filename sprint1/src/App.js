@@ -6,7 +6,7 @@ import Video from "./scripts/video";
 import VideoInfo from "./scripts/videoInfo";
 import VideoList from "./scripts/videoList";
 import "./styles/main.css";
-//import axios from "axios";
+import VideoControls from "./scripts/videoControls";
 
 //comment data
 const comments = [
@@ -87,7 +87,7 @@ const sideVideos = [
 
 //Main Video Object
 const mainVideo = {
-  id: "type of <string>",
+  id: "id type of string",
   title: "BMX Rampage: 2018 Highlights",
   description:
     "On a gusty day in Southern Utah, a group of 25 daring mountain bikers blew the doors off what is possible on two wheels, unleashing some of the biggest moments the sport has ever seen. While mother nature only allowed for one full run before the conditions made it impossible to ride, that was all that was needed for event veteran Kyle Strait, who won the event for the second time -- eight years after his first Red Cow Rampage title",
@@ -97,18 +97,22 @@ const mainVideo = {
   likes: "110,985",
   duration: "42",
   video: "/Images/video-list-0.jpg",
-  timestamp: "12/18/2018",
+  timestamp: "1545120000000",
   comments: "[]"
 };
 
 class App extends React.Component {
   state = {
-    // mainVideo: mainVideo.id,
     commentNumber: comments.length
   };
 
+  //event handler for comment button
   clickHandler = event => {
     event.preventDefault();
+    /**
+     * create a new comment object and put it into the comment array.
+     * clear the comment input and update the state.commentNumber
+     */
     const newComment = {
       name: "Daniel Kim",
       date: JSON.stringify(new Date().getTime()),
@@ -119,11 +123,16 @@ class App extends React.Component {
     event.target.reset();
     this.setState({ commentNumber: comments.length });
   };
+
   render() {
+    //divs added for styling purposes in desktop view.
     return (
       <>
         <Header />
-        <Video mainVideo={mainVideo} />
+        <div className="mainVideo-container">
+          <Video mainVideo={mainVideo} />
+          <VideoControls />
+        </div>
         <div className="desktop-view">
           <div className="desktop-view__left">
             <VideoInfo mainVideo={mainVideo} />

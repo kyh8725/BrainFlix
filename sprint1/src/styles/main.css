@@ -541,6 +541,112 @@ button:hover {
   }
 }
 
+.mainVideo-container {
+  position: relative;
+  margin: 0;
+}
+
+.control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 1rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  width: 90%;
+  bottom: 0.5rem;
+}
+
+.control__playPause {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 2rem;
+  border-radius: 0.2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-flex: 0.2;
+      -ms-flex: 0.2;
+          flex: 0.2;
+}
+
+.control__playPause img {
+  height: 50%;
+}
+
+.control__progressBar {
+  height: 2rem;
+  border-radius: 0.2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 0.6;
+      -ms-flex: 0.6;
+          flex: 0.6;
+  margin-left: 0.5rem;
+}
+
+.control__progress {
+  background-color: black;
+  width: 75%;
+  border-radius: 0.5rem;
+  height: 0.2rem;
+  display: inline-block;
+}
+
+.control__volumeScreen {
+  -webkit-box-flex: 0.3;
+      -ms-flex: 0.3;
+          flex: 0.3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 2rem;
+  border-radius: 0.2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-left: 0.5rem;
+}
+
+.control__volumeScreen img {
+  height: 50%;
+}
+
+@media only screen and (min-width: 768px) {
+  .control {
+    width: 85%;
+    left: 3rem;
+  }
+}
+
 .video-list {
   margin: 2.5rem 1rem;
 }

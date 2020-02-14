@@ -1,0 +1,61 @@
+@mixin player {
+  height: 2rem;
+  border-radius: 0.2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainVideo-container {
+  position: relative;
+  margin: 0;
+}
+.control {
+  @include flexCenter;
+  margin: 0 1rem;
+  justify-content: space-between;
+  position: absolute;
+  width: 90%;
+  bottom: 0.5rem;
+
+  &__playPause {
+    @include flexCenter;
+    @include player;
+    flex: 0.2;
+    img {
+      height: 50%;
+    }
+  }
+  &__progressBar {
+    @include player;
+    @include flexCenter;
+    flex: 0.6;
+    margin-left: 0.5rem;
+  }
+  &__progress {
+    background-color: black;
+    width: 75%;
+    border-radius: 0.5rem;
+    height: 0.2rem;
+    display: inline-block;
+  }
+  &__volumeScreen {
+    flex: 0.3;
+    @include flexCenter;
+    @include player;
+    justify-content: space-evenly;
+    margin-left: 0.5rem;
+    img {
+      height: 50%;
+    }
+  }
+}
+
+@include tablet {
+  .control {
+    width: 85%;
+    left: 3rem;
+  }
+}
