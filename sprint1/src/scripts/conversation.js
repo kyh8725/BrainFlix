@@ -4,7 +4,7 @@ import faceImage from "../assets/Images/face.png";
 export default function conversation(props) {
   return (
     <div className="conv">
-      <h1 className="conv__title">{`${props.count} Comments`}</h1>
+      <h1 className="conv__title">{`${props.comments.length} Comments`}</h1>
       <form
         id="comments"
         onSubmit={props.onSubmit}

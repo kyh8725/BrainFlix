@@ -7,27 +7,26 @@ import VideoInfo from "./scripts/videoInfo";
 import VideoList from "./scripts/videoList";
 import "./styles/main.css";
 import VideoControls from "./scripts/videoControls";
-//import axios from "axios";
 
 // //comment data
 const comments = [
   {
     name: "Micheal Lyons",
-    date: "1545120000000",
+    timestamp: "1545120000000",
     comment:
       "They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVER witnessed.",
     img: "/Images/face0.png"
   },
   {
     name: "Gary Wong",
-    date: "1545120000000",
+    timestamp: "1545120000000",
     comment:
       "Every time I see him shred I feel so motivated to get off my couch and hop on my board. He’s so talented! I wish I can ride like him one day so I can really enjoy myself!",
     img: "/Images/face1.png"
   },
   {
     name: "Theodore Duncan",
-    date: "1542268800000",
+    timestamp: "1542268800000",
     comment:
       "How can someone be so good!!! You can tell he lives for this and loves to do it every day. Everytime I see him I feel instantly happy! He’s definitely my favorite ever!",
     img: "/Images/face2.png"
@@ -101,39 +100,14 @@ const mainVideo = {
   timestamp: "1545120000000",
   comments: "[]"
 };
+
 class App extends React.Component {
   state = {
     commentCount: comments.length
-    //comments: [],
-    //userName: "Daniel Kim"
   };
-
-  // componentDidMount() {
-  //   axios
-  //     .get("https://project-1-api.herokuapp.com/comments?api_key=Daniel")
-  //     .then(response => {
-  //       this.setState({ comments: response.data });
-  //     });
-  // }
 
   clickHandler = event => {
     event.preventDefault();
-
-    // let newComment = event.target.input.value;
-    // if (newComment !== "") {
-    //   axios
-    //     .post("https://project-1-api.herokuapp.com/comments?api_key=Daniel", {
-    //       name: this.state.userName,
-    //       comment: newComment
-    //     })
-    //     .then(response => {
-    //       console.log(response.data);
-    //       this.setState({ comments: response.data });
-    //     });
-    // } else {
-    //   window.alert("Please write your comments");
-    // }
-
     /**
      * create a new comment object and put it into the comment array.
      * clear the comment input and update the state.commentNumber
@@ -142,7 +116,7 @@ class App extends React.Component {
     if (newComments !== "") {
       const newCommentObject = {
         name: "Daniel Kim",
-        date: JSON.stringify(new Date().getTime()),
+        timestamp: JSON.stringify(new Date().getTime()),
         comment: newComments,
         img: "/Images/face.png"
       };
@@ -167,8 +141,9 @@ class App extends React.Component {
             <div className="desktop-view__left">
               <VideoInfo mainVideo={mainVideo} />
               <Conversation
-                count={this.state.commentCount}
                 onSubmit={this.clickHandler}
+                comments={comments}
+                count={this.state.commentCount}
               />
               <Comments comments={comments} />
             </div>
