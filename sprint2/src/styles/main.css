@@ -64,6 +64,11 @@ match the mockup image.
   background-image: none;
 }
 
+.header__upload-link {
+  width: 100%;
+  margin-right: 1rem;
+}
+
 .header__bimg {
   display: -webkit-box;
   display: -ms-flexbox;
