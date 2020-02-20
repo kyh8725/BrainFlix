@@ -46,6 +46,24 @@ class App extends Component {
     }
   }
 
+  eventHandler = event => {
+    event.preventDefault();
+    const comments = event.target.commentInput.value;
+    axios
+      .post(`${$url}${this.state.mainVideoId}/comments${$key}`, {
+        comment: comments,
+        name: "Daniel Kim"
+      })
+      .then(response => {
+        axios.get(`${$url}${this.state.mainVideoId}${$key}`).then(response => {
+          const mainVideo = response.data;
+          this.setState({ commentCount: mainVideo.comments.length });
+          this.setState({ comments: mainVideo.comments });
+        });
+      });
+    event.target.reset();
+  };
+
   render() {
     return (
       <Router>
@@ -76,7 +94,10 @@ class App extends Component {
                   <div className="desktop-view">
                     <div className="desktop-view__left">
                       <VideoInfo mainVideo={this.state.mainVideo} />
-                      <Conversation commentCount={this.state.commentCount} />
+                      <Conversation
+                        commentCount={this.state.commentCount}
+                        onSubmit={this.eventHandler}
+                      />
                       <Comments comments={this.state.comments} />
                     </div>
                     <div className="desktop-view__right">
@@ -106,7 +127,10 @@ class App extends Component {
                   <div className="desktop-view">
                     <div className="desktop-view__left">
                       <VideoInfo mainVideo={this.state.mainVideo} />
-                      <Conversation commentCount={this.state.commentCount} />
+                      <Conversation
+                        commentCount={this.state.commentCount}
+                        onSubmit={this.eventHandler}
+                      />
                       <Comments comments={this.state.comments} />
                     </div>
                     <div className="desktop-view__right">
