@@ -181,6 +181,24 @@ button:hover {
   background-color: #0065ad;
 }
 
+.comment__delete-button {
+  font-family: "avenir";
+  font-size: 0.5rem;
+  color: #ffffff;
+  width: 2rem;
+  height: 1.5rem;
+}
+
+.comment__delete-button:hover {
+  background-color: red;
+}
+
+@media only screen and (min-width: 768px) {
+  .comment__delete-button {
+    width: 3rem;
+  }
+}
+
 .comment {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -251,6 +269,9 @@ button:hover {
 }
 
 .comment__paragraph-text {
+  -webkit-box-flex: 0.95;
+      -ms-flex: 0.95;
+          flex: 0.95;
   font-size: 0.875rem;
 }
 

@@ -46,6 +46,14 @@ class App extends Component {
     }
   }
 
+  deleteHandler = () => {
+    axios.get(`${$url}${this.state.mainVideoId}${$key}`).then(response => {
+      const mainVideo = response.data;
+      this.setState({ commentCount: mainVideo.comments.length });
+      this.setState({ comments: mainVideo.comments });
+    });
+  };
+
   eventHandler = event => {
     event.preventDefault();
     const comments = event.target.commentInput.value;
@@ -98,7 +106,11 @@ class App extends Component {
                         commentCount={this.state.commentCount}
                         onSubmit={this.eventHandler}
                       />
-                      <Comments comments={this.state.comments} />
+                      <Comments
+                        comments={this.state.comments}
+                        mainVideoId={this.state.mainVideoId}
+                        deleteHandler={this.deleteHandler}
+                      />
                     </div>
                     <div className="desktop-view__right">
                       <VideoList
@@ -131,7 +143,11 @@ class App extends Component {
                         commentCount={this.state.commentCount}
                         onSubmit={this.eventHandler}
                       />
-                      <Comments comments={this.state.comments} />
+                      <Comments
+                        comments={this.state.comments}
+                        mainVideoId={this.state.mainVideoId}
+                        deleteHandler={this.deleteHandler}
+                      />
                     </div>
                     <div className="desktop-view__right">
                       <VideoList

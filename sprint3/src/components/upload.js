@@ -11,7 +11,7 @@ export default function upload() {
         <div className="upload__thumbnail">
           <p className="upload__thumbnail-title">VIDEO THUMBNAIL</p>
           <div className="upload__thumbnail-image">
-            <img src={uploadImage} />
+            <img src={uploadImage} alt="upload" />
           </div>
         </div>
         <div className="upload__video">

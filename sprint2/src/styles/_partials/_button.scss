@@ -13,3 +13,20 @@ button {
     background-color: $brainflix-blue-dark;
   }
 }
+
+.comment__delete-button {
+  font-family: "avenir";
+  font-size: 0.5rem;
+  color: $white;
+  width: 2rem;
+  height: 1.5rem;
+  &:hover {
+    background-color: red;
+  }
+}
+
+@include tablet {
+  .comment__delete-button {
+    width: 3rem;
+  }
+}
