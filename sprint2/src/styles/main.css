@@ -794,6 +794,208 @@ button:hover {
   }
 }
 
+main {
+  border-top: 1px solid #e1e1e1;
+}
+
+.upload {
+  margin: 0 1rem;
+  padding: 1.5rem 0;
+}
+
+.upload * {
+  margin: 0;
+}
+
+.upload__header {
+  font-family: "avenir-bold";
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.upload__header h1 {
+  padding-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.upload__thumbnail-image {
+  font-size: 0;
+  line-height: 0;
+}
+
+.upload__thumbnail, .upload__video {
+  font-size: 13px;
+  line-height: 18px;
+  font-family: "avenir-demi";
+  font-size: 0.75rem;
+  color: #afafaf;
+}
+
+.upload__thumbnail img, .upload__video img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.upload__thumbnail-title, .upload__video-title {
+  margin-bottom: 0.3rem;
+}
+
+.upload__thumbnail-desc-title, .upload__video-desc-title {
+  margin-top: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.upload__thumbnail-title-input, .upload__thumbnail-desc-input, .upload__video-title-input, .upload__video-desc-input {
+  border: 1px solid #afafaf;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: #fafafa;
+  width: 100%;
+}
+
+.upload__thumbnail-title-input::-webkit-input-placeholder, .upload__thumbnail-desc-input::-webkit-input-placeholder, .upload__video-title-input::-webkit-input-placeholder, .upload__video-desc-input::-webkit-input-placeholder {
+  color: #323232;
+  font-size: 0.9rem;
+  font-family: "avenir";
+}
+
+.upload__thumbnail-title-input:-ms-input-placeholder, .upload__thumbnail-desc-input:-ms-input-placeholder, .upload__video-title-input:-ms-input-placeholder, .upload__video-desc-input:-ms-input-placeholder {
+  color: #323232;
+  font-size: 0.9rem;
+  font-family: "avenir";
+}
+
+.upload__thumbnail-title-input::-ms-input-placeholder, .upload__thumbnail-desc-input::-ms-input-placeholder, .upload__video-title-input::-ms-input-placeholder, .upload__video-desc-input::-ms-input-placeholder {
+  color: #323232;
+  font-size: 0.9rem;
+  font-family: "avenir";
+}
+
+.upload__thumbnail-title-input::placeholder, .upload__thumbnail-desc-input::placeholder, .upload__video-title-input::placeholder, .upload__video-desc-input::placeholder {
+  color: #323232;
+  font-size: 0.9rem;
+  font-family: "avenir";
+}
+
+.upload__thumbnail-title-input, .upload__video-title-input {
+  height: 3rem;
+}
+
+.upload__thumbnail-desc-input, .upload__video-desc-input {
+  height: 8.9375rem;
+}
+
+.upload__buttons {
+  margin-top: 2rem;
+}
+
+.upload__buttons-cancel {
+  margin-top: 1rem;
+  color: #0095ff;
+  background-color: #ffffff;
+}
+
+@media only screen and (min-width: 768px) {
+  .upload {
+    padding: 0;
+    margin: 3rem 1.5rem;
+  }
+  .upload__header {
+    border-bottom: 1px solid #e1e1e1;
+  }
+  .upload__header h1 {
+    font-size: 2rem;
+  }
+  .upload__thumbnail {
+    width: 47.78%;
+  }
+  .upload__thumbnail-title {
+    margin-top: 2.5rem;
+  }
+  .upload__video {
+    margin-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  .upload__buttons {
+    margin-top: 2.5rem;
+    margin-left: 55.555%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .upload__buttons-cancel {
+    margin: 0;
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .upload {
+    margin: 3rem 11.25rem;
+  }
+  .upload__header h1 {
+    font-size: 3em;
+  }
+  .upload__contents {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    padding-top: 2.5rem;
+  }
+  .upload__thumbnail {
+    -webkit-box-flex: 0.32576;
+        -ms-flex: 0.32576;
+            flex: 0.32576;
+  }
+  .upload__thumbnail-title {
+    margin-top: 0.2rem;
+  }
+  .upload__video {
+    margin-top: 0;
+    padding-bottom: 0;
+    -webkit-box-flex: 0.67424;
+        -ms-flex: 0.67424;
+            flex: 0.67424;
+    margin-left: 1.5rem;
+    border-bottom: none;
+  }
+  .upload__video form {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  .upload__video-title-input {
+    height: 25%;
+  }
+  .upload__video-desc-input {
+    height: 41%;
+  }
+  .upload__video-desc-title {
+    margin-bottom: 0.2rem;
+  }
+  .upload__buttons {
+    margin-left: 70.37%;
+  }
+}
+
 body {
   font-family: "avenir";
   -webkit-box-sizing: border-box;
