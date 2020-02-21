@@ -26,29 +26,20 @@ class App extends Component {
   componentDidMount() {
     axios.get($url + $key).then(response => {
       this.setState({ videoList: response.data });
-      axios.get(`${$url}${$homeKey}${$key}`).then(response => {
-        const mainVideo = response.data;
-        this.setState({ mainVideo });
-        this.setState({ commentCount: mainVideo.comments.length });
-        this.setState({ comments: mainVideo.comments });
-      });
+      this.getMainVideo();
     });
   }
 
   componentDidUpdate(prevProp, prevState) {
     if (prevState.mainVideoId !== this.state.mainVideoId) {
-      axios.get(`${$url}${this.state.mainVideoId}${$key}`).then(response => {
-        const mainVideo = response.data;
-        this.setState({ mainVideo });
-        this.setState({ commentCount: mainVideo.comments.length });
-        this.setState({ comments: mainVideo.comments });
-      });
+      this.getMainVideo();
     }
   }
 
-  deleteHandler = () => {
+  getMainVideo = () => {
     axios.get(`${$url}${this.state.mainVideoId}${$key}`).then(response => {
       const mainVideo = response.data;
+      this.setState({ mainVideo });
       this.setState({ commentCount: mainVideo.comments.length });
       this.setState({ comments: mainVideo.comments });
     });
@@ -57,19 +48,19 @@ class App extends Component {
   eventHandler = event => {
     event.preventDefault();
     const comments = event.target.commentInput.value;
-    axios
-      .post(`${$url}${this.state.mainVideoId}/comments${$key}`, {
-        comment: comments,
-        name: "Daniel Kim"
-      })
-      .then(response => {
-        axios.get(`${$url}${this.state.mainVideoId}${$key}`).then(response => {
-          const mainVideo = response.data;
-          this.setState({ commentCount: mainVideo.comments.length });
-          this.setState({ comments: mainVideo.comments });
+    if (comments !== "") {
+      axios
+        .post(`${$url}${this.state.mainVideoId}/comments${$key}`, {
+          comment: comments,
+          name: "Daniel Kim"
+        })
+        .then(response => {
+          this.getMainVideo();
         });
-      });
-    event.target.reset();
+      event.target.reset();
+    } else {
+      window.alert("Please type comments");
+    }
   };
 
   render() {
@@ -109,7 +100,7 @@ class App extends Component {
                       <Comments
                         comments={this.state.comments}
                         mainVideoId={this.state.mainVideoId}
-                        deleteHandler={this.deleteHandler}
+                        deleteHandler={this.getMainVideo}
                       />
                     </div>
                     <div className="desktop-view__right">
@@ -146,7 +137,7 @@ class App extends Component {
                       <Comments
                         comments={this.state.comments}
                         mainVideoId={this.state.mainVideoId}
-                        deleteHandler={this.deleteHandler}
+                        deleteHandler={this.getMainVideo}
                       />
                     </div>
                     <div className="desktop-view__right">

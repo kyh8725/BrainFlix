@@ -20,6 +20,7 @@ export default function videoList(props) {
         </div>
       );
     }
+    return true;
   });
 
   return (

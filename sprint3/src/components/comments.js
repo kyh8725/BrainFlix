@@ -5,7 +5,6 @@ import faceImage from "../assets/Images/face.png";
 import axios from "axios";
 const $url = "https://project-2-api.herokuapp.com/videos/";
 const $key = "?api_key=Daniel";
-//  /videos/:videoId/comments/:commentId`
 
 export default function comments(props) {
   const clickHandler = event => {

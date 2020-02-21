@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function video(props) {
   return (
     <div className="video">
