@@ -11,8 +11,6 @@ import axios from "axios";
 import "./styles/main.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-const $url = "https://project-2-api.herokuapp.com/videos/";
-const $key = "?api_key=Daniel";
 const $homeKey = "1af0jruup5gu";
 
 class App extends Component {
@@ -25,7 +23,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    axios.get($url + $key).then(response => {
+    axios.get("/videos/").then(response => {
       this.setState({ videoList: response.data });
       this.getMainVideo();
     });
@@ -38,31 +36,33 @@ class App extends Component {
   }
 
   getMainVideo = () => {
-    axios.get(`${$url}${this.state.mainVideoId}${$key}`).then(response => {
-      const mainVideo = response.data;
+    axios.get(`/videos/${this.state.mainVideoId}`).then(response => {
+      const mainVideo = response.data[0];
       this.setState({ mainVideo });
       this.setState({ commentCount: mainVideo.comments.length });
       this.setState({ comments: mainVideo.comments });
     });
   };
 
-  eventHandler = event => {
-    event.preventDefault();
-    const comments = event.target.commentInput.value;
-    if (comments !== "") {
-      axios
-        .post(`${$url}${this.state.mainVideoId}/comments${$key}`, {
-          comment: comments,
-          name: "Daniel Kim"
-        })
-        .then(response => {
-          this.getMainVideo();
-        });
-      event.target.reset();
-    } else {
-      window.alert("Please type comments");
-    }
-  };
+  uploadHandler() {}
+
+  // eventHandler = event => {
+  //   event.preventDefault();
+  //   const comments = event.target.commentInput.value;
+  //   if (comments !== "") {
+  //     axios
+  //       .post(`/videos/`, {
+  //         comment: comments,
+  //         name: "Daniel Kim"
+  //       })
+  //       .then(response => {
+  //         this.getMainVideo();
+  //       });
+  //     event.target.reset();
+  //   } else {
+  //     window.alert("Please type comments");
+  //   }
+  // };
 
   render() {
     return (
@@ -74,7 +74,7 @@ class App extends Component {
             render={() => {
               return (
                 <main>
-                  <Upload postVideo={this.postVideo} />
+                  <Upload getMainVideo={this.getMainVideo} />
                 </main>
               );
             }}

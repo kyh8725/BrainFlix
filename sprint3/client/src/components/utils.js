@@ -10,20 +10,26 @@ function formatDate(timestamp) {
   let result = "";
 
   if (diffY >= 1) {
+    let tempMo = diffMo % 12;
+
     diffY < 2
       ? (result = Math.floor(diffY) + " yr ")
       : (result = Math.floor(diffY) + " yrs ");
-    let tempMo = diffMo % 12;
-    tempMo.toFixed(0) < 2
-      ? (result += tempMo.toFixed(0) + " mth ago")
-      : (result += tempMo.toFixed(0) + " mths ago");
+
+    if (Number(tempMo.toFixed(0)) === 0) {
+      result += " ago";
+    } else {
+      tempMo < 2
+        ? (result += tempMo.toFixed(0) + " mth ago")
+        : (result += tempMo.toFixed(0) + " mths ago");
+    }
   } else {
     if (diffMo > 1 && diffMo < 12) {
-      diffMo.toFixed(0) < 2
+      Number(diffMo.toFixed(0)) < 2
         ? (result = diffMo.toFixed(0) + " mth ")
         : (result = diffMo.toFixed(0) + " mths ");
       let tempD = diffD % 31;
-      tempD.toFixed(0) < 2
+      Number(tempD.toFixed(0)) < 2
         ? (result += tempD.toFixed(0) + " day ago")
         : (result += tempD.toFixed(0) + " days ago");
     } else {

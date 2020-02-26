@@ -1022,13 +1022,14 @@ main {
     height: 25%;
   }
   .upload__video-desc-input {
-    height: 41%;
+    height: 36%;
   }
   .upload__video-desc-title {
     margin-bottom: 0.2rem;
   }
   .upload__buttons {
-    margin-left: 70.37%;
+    margin-left: 55.055%;
+    width: 100%;
   }
 }
 

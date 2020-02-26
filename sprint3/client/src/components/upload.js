@@ -1,8 +1,34 @@
 import React from "react";
 import uuid from "uuid/v1";
+import axios from "axios";
 import uploadImage from "../assets/Images/Upload-video-preview.jpg";
 
-export default function upload() {
+export default function upload(props) {
+  const uploadHandler = event => {
+    event.preventDefault();
+
+    if (event.target.name === "cancel") {
+      event.target.reset();
+    } else {
+      const title = event.target.videoTitle.value;
+      const description = event.target.videoDesc.value;
+      if (title !== "" && description !== "") {
+        axios
+          .post(`/videos/`, {
+            title: title,
+            description: description
+          })
+          .then(response => {
+            props.getMainVideo();
+          });
+        event.target.reset();
+        window.alert("video successfully uploaded");
+      } else {
+        window.alert("Please provide both title and description of video");
+      }
+    }
+  };
+
   return (
     <div className="upload">
       <div className="upload__header">
@@ -16,31 +42,31 @@ export default function upload() {
           </div>
         </div>
         <div className="upload__video">
-          <form id={uuid()}>
+          <form id={uuid()} onSubmit={uploadHandler}>
             <p className="upload__video-title">TITLE YOUR VIDEO</p>
             <input
               className="upload__video-title-input"
-              name="video-title"
+              name="videoTitle"
               type="/text"
               placeholder="Add a title to your video"
             ></input>
             <p className="upload__video-desc-title">ADD A VIDEO DESCRIPTION</p>
             <textarea
               className="upload__video-desc-input"
-              name="video-desc"
+              name="videoDesc"
               type="/text"
               placeholder="Add a description of your video"
             ></textarea>
+            <div className="upload__buttons">
+              <button className="upload__buttons-publish" name="publish">
+                PUBLISH
+              </button>
+              <button className="upload__buttons-cancel" name="cancel">
+                CANCEL
+              </button>
+            </div>
           </form>
         </div>
-      </div>
-      <div className="upload__buttons">
-        <button className="upload__buttons-publish" name="publish">
-          PUBLISH
-        </button>
-        <button className="upload__buttons-cancel" name="cancel">
-          CANCEL
-        </button>
       </div>
     </div>
   );

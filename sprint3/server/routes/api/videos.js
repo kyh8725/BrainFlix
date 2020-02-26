@@ -3,6 +3,7 @@ const helper = require("../../helper/helper");
 const router = express.Router();
 const videoFile = __dirname + "/../../models/mainVideo.json";
 const videos = require(videoFile);
+//const previewImage = require("../../public/Upload-video-preview.jpg");
 
 router.get("/", (req, res) => {
   const videoLists = videos.map(video => {
