@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.27b9ad63.chunk.css",
+    "main.js": "/static/js/main.e2e126ec.chunk.js",
+    "main.js.map": "/static/js/main.e2e126ec.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.2b718846.js",
+    "runtime-main.js.map": "/static/js/runtime-main.2b718846.js.map",
+    "static/js/2.17e85104.chunk.js": "/static/js/2.17e85104.chunk.js",
+    "static/js/2.17e85104.chunk.js.map": "/static/js/2.17e85104.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.3b6c0935ccc4faab2f641b057394dfc0.js": "/precache-manifest.3b6c0935ccc4faab2f641b057394dfc0.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.27b9ad63.chunk.css.map": "/static/css/main.27b9ad63.chunk.css.map",
+    "static/js/2.17e85104.chunk.js.LICENSE.txt": "/static/js/2.17e85104.chunk.js.LICENSE.txt",
+    "static/media/main.css": "/static/media/Icon-search.28606900.svg",
+    "static/media/Icon-likes.svg": "/static/media/Icon-likes.23c3f857.svg",
+    "static/media/Icon-views.svg": "/static/media/Icon-views.a488fc5b.svg",
+    "static/media/Logo-brainflix.svg": "/static/media/Logo-brainflix.1e121e6b.svg",
+    "static/media/face.png": "/static/media/face.a9fc47f5.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2b718846.js",
+    "static/js/2.17e85104.chunk.js",
+    "static/css/main.27b9ad63.chunk.css",
+    "static/js/main.e2e126ec.chunk.js"
+  ]
+}
