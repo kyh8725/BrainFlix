@@ -3,7 +3,6 @@ const helper = require("../../helper/helper");
 const router = express.Router();
 const videoFile = __dirname + "/../../models/mainVideo.json";
 const videos = require(videoFile);
-//const previewImage = require("../../public/Upload-video-preview.jpg");
 
 router.get("/", (req, res) => {
   const videoLists = videos.map(video => {
@@ -22,7 +21,7 @@ router.post("/", (req, res) => {
     id: helper.getNewId(),
     title: req.body.title,
     channel: "Dainel Kim",
-    image: "https://i.imgur.com/l2Xfgpl.jpg",
+    image: req.body.image,
     description: req.body.description,
     name: "Daniel Kim",
     timestamp: new Date().getTime(),
@@ -54,6 +53,28 @@ router.get("/:id", (req, res) => {
       .status(400)
       .json({ errorMessage: `Video with ID: ${req.params.id} not found` });
   }
+});
+
+router.post("/:id", (req, res) => {
+  const newComment = {
+    name: req.body.name,
+    comment: req.body.comment,
+    id: helper.getNewId(),
+    likes: 0,
+    timestamp: new Date().getTime()
+  };
+  if (!newComment.comment) {
+    return res.status(400).json({
+      errorMessage: "Please write comments"
+    });
+  }
+  videos.map(video => {
+    if (video.id === req.params.id) {
+      video["comments"].push(newComment);
+    }
+  });
+  helper.writeJSONFile(videoFile, videos);
+  res.json(videos);
 });
 
 module.exports = router;

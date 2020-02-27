@@ -16,7 +16,8 @@ export default function upload(props) {
         axios
           .post(`/videos/`, {
             title: title,
-            description: description
+            description: description,
+            image: uploadImage
           })
           .then(response => {
             props.getMainVideo();

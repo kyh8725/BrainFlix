@@ -46,23 +46,23 @@ class App extends Component {
 
   uploadHandler() {}
 
-  // eventHandler = event => {
-  //   event.preventDefault();
-  //   const comments = event.target.commentInput.value;
-  //   if (comments !== "") {
-  //     axios
-  //       .post(`/videos/`, {
-  //         comment: comments,
-  //         name: "Daniel Kim"
-  //       })
-  //       .then(response => {
-  //         this.getMainVideo();
-  //       });
-  //     event.target.reset();
-  //   } else {
-  //     window.alert("Please type comments");
-  //   }
-  // };
+  eventHandler = event => {
+    event.preventDefault();
+    const comments = event.target.commentInput.value;
+    if (comments !== "") {
+      axios
+        .post(`/videos/${this.state.mainVideoId}`, {
+          comment: comments,
+          name: "Daniel Kim"
+        })
+        .then(response => {
+          this.getMainVideo();
+        });
+      event.target.reset();
+    } else {
+      window.alert("Please type comments");
+    }
+  };
 
   render() {
     return (
