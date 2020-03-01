@@ -39,17 +39,14 @@ class App extends Component {
     axios.get(`/videos/${this.state.mainVideoId}`).then(response => {
       const mainVideo = response.data[0];
       this.setState({ mainVideo });
-      this.setState({ commentCount: mainVideo.comments.length });
       this.setState({ comments: mainVideo.comments });
+      this.setState({ commentCount: mainVideo.comments.length });
     });
   };
 
   likesHandler = () => {
     axios.put(`/videos/${this.state.mainVideoId}/likes`).then(response => {
-      const mainVideo = response.data[0];
-      this.setState({ mainVideo });
-      this.setState({ commentCount: mainVideo.comments.length });
-      this.setState({ comments: mainVideo.comments });
+      this.getMainVideo();
     });
   };
 

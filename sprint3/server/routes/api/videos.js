@@ -56,24 +56,13 @@ router.get("/videos/:id", (req, res) => {
 });
 
 router.put("/videos/:videoId/likes", (req, res) => {
-  const found = videos.some(video => {
-    return video.id === req.params.videoId;
+  videos.map(video => {
+    if (video.id === req.params.videoId) {
+      video.likes = (Number(video.likes.replace(",", "")) + 1).toLocaleString();
+      helper.writeJSONFile(videoFile, videos);
+      res.json(videos);
+    }
   });
-  if (found) {
-    videos.map(video => {
-      if (video.id === req.params.videoId) {
-        video.likes = (
-          Number(video.likes.replace(",", "")) + 1
-        ).toLocaleString();
-        helper.writeJSONFile(videoFile, videos);
-        res.json(videos);
-      } else {
-        res.status(400).json({
-          errorMessage: `put likes error`
-        });
-      }
-    });
-  }
 });
 
 router.post("/comments/:id", (req, res) => {
