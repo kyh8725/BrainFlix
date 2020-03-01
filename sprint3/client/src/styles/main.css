@@ -430,6 +430,8 @@ button:hover {
 }
 
 .video__playing {
+  -o-object-fit: fill;
+     object-fit: fill;
   width: 100%;
   height: 100%;
 }

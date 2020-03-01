@@ -3,12 +3,14 @@ import uuid from "uuid/v1";
 import formatDate from "./utils";
 import faceImage from "../assets/Images/face.png";
 import axios from "axios";
-const $url = "https://project-2-api.herokuapp.com/videos/";
-const $key = "?api_key=Daniel";
 
 export default function comments(props) {
   const deleteHandler = event => {
-    axios.delete(`/comments/:id`).then(response => {});
+    axios
+      .delete(`/comments/${props.mainVideoId}/${event.target.id}`)
+      .then(response => {
+        props.getMainVideo();
+      });
   };
 
   const commentList = props.comments

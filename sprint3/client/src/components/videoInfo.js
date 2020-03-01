@@ -2,7 +2,6 @@ import React from "react";
 import viewIcon from "../assets/Icons/SVG/Icon-views.svg";
 import likeIcon from "../assets/Icons/SVG/Icon-likes.svg";
 import formatDate from "./utils";
-//import axios from "axios";
 
 export default function videoInfo(props) {
   return (

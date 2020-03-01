@@ -69,7 +69,7 @@ router.put("/videos/:videoId/likes", (req, res) => {
         res.json(videos);
       } else {
         res.status(400).json({
-          errorMessage: `put likes not working`
+          errorMessage: `put likes error`
         });
       }
     });
@@ -98,9 +98,17 @@ router.post("/comments/:id", (req, res) => {
   res.json(videos);
 });
 
-router.delete("/comments/:id", (req, res) => {
-  helper.writeJSONFile(videoFile, videos);
-  res.json(videos);
+router.delete("/comments/:id/:commentId", (req, res) => {
+  videos.map(video => {
+    if (req.params.id === video.id) {
+      const newComments = video["comments"].filter(
+        comment => comment.id !== req.params.commentId
+      );
+      video["comments"] = newComments;
+      helper.writeJSONFile(videoFile, videos);
+      res.json(videos);
+    }
+  });
 });
 
 module.exports = router;
