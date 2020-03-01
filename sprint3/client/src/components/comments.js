@@ -7,12 +7,8 @@ const $url = "https://project-2-api.herokuapp.com/videos/";
 const $key = "?api_key=Daniel";
 
 export default function comments(props) {
-  const clickHandler = event => {
-    axios
-      .delete(`${$url}${props.mainVideoId}/comments/${event.target.id}${$key}`)
-      .then(response => {
-        props.deleteHandler();
-      });
+  const deleteHandler = event => {
+    axios.delete(`/comments/:id`).then(response => {});
   };
 
   const commentList = props.comments
@@ -34,7 +30,7 @@ export default function comments(props) {
             <div className="comment__paragraph">
               <p className="comment__paragraph-text">{com.comment}</p>
               <button
-                onClick={clickHandler}
+                onClick={deleteHandler}
                 id={com.id}
                 className="comment__delete-button"
               >

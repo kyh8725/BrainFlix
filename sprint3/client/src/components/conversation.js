@@ -1,12 +1,29 @@
 import React from "react";
 import faceImage from "../assets/Images/face.png";
+import axios from "axios";
 
 export default function conversation(props) {
+  const commentHandler = event => {
+    event.preventDefault();
+    const comments = event.target.commentInput.value;
+    if (comments !== "") {
+      axios
+        .post(`/comments/${props.mainVideoId}`, {
+          comment: comments
+        })
+        .then(response => {
+          props.getMainVideo();
+        });
+      event.target.reset();
+    } else {
+      window.alert("Please type comments");
+    }
+  };
   return (
     <div className="conv">
       <h1 className="conv__title">{`${props.commentCount} Comments`}</h1>
       <form
-        onSubmit={props.onSubmit}
+        onSubmit={commentHandler}
         id="comments"
         className="conv__join"
         name="comment-form"

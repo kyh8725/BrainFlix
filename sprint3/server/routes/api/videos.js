@@ -4,7 +4,7 @@ const router = express.Router();
 const videoFile = __dirname + "/../../models/mainVideo.json";
 const videos = require(videoFile);
 
-router.get("/", (req, res) => {
+router.get("/videos", (req, res) => {
   const videoLists = videos.map(video => {
     return {
       id: video.id,
@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
   res.send(videoLists);
 });
 
-router.post("/", (req, res) => {
+router.post("/videos", (req, res) => {
   const newVideo = {
     id: helper.getNewId(),
     title: req.body.title,
@@ -42,7 +42,7 @@ router.post("/", (req, res) => {
   res.json(videos);
 });
 
-router.get("/:id", (req, res) => {
+router.get("/videos/:id", (req, res) => {
   const found = videos.some(video => {
     return video.id === req.params.id;
   });
@@ -55,9 +55,30 @@ router.get("/:id", (req, res) => {
   }
 });
 
-router.post("/:id", (req, res) => {
+router.put("/videos/:videoId/likes", (req, res) => {
+  const found = videos.some(video => {
+    return video.id === req.params.videoId;
+  });
+  if (found) {
+    videos.map(video => {
+      if (video.id === req.params.videoId) {
+        video.likes = (
+          Number(video.likes.replace(",", "")) + 1
+        ).toLocaleString();
+        helper.writeJSONFile(videoFile, videos);
+        res.json(videos);
+      } else {
+        res.status(400).json({
+          errorMessage: `put likes not working`
+        });
+      }
+    });
+  }
+});
+
+router.post("/comments/:id", (req, res) => {
   const newComment = {
-    name: req.body.name,
+    name: "Daniel Kim",
     comment: req.body.comment,
     id: helper.getNewId(),
     likes: 0,
@@ -73,6 +94,11 @@ router.post("/:id", (req, res) => {
       video["comments"].push(newComment);
     }
   });
+  helper.writeJSONFile(videoFile, videos);
+  res.json(videos);
+});
+
+router.delete("/comments/:id", (req, res) => {
   helper.writeJSONFile(videoFile, videos);
   res.json(videos);
 });

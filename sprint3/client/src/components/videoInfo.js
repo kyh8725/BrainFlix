@@ -2,6 +2,7 @@ import React from "react";
 import viewIcon from "../assets/Icons/SVG/Icon-views.svg";
 import likeIcon from "../assets/Icons/SVG/Icon-likes.svg";
 import formatDate from "./utils";
+//import axios from "axios";
 
 export default function videoInfo(props) {
   return (
@@ -20,7 +21,7 @@ export default function videoInfo(props) {
             {props.mainVideo.views}
           </p>
           <p className="video__likes">
-            <img src={likeIcon} alt="like-icon" />
+            <img onClick={props.likesHandler} src={likeIcon} alt="like-icon" />
             {props.mainVideo.likes}
           </p>
         </div>

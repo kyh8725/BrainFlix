@@ -44,24 +44,13 @@ class App extends Component {
     });
   };
 
-  uploadHandler() {}
-
-  eventHandler = event => {
-    event.preventDefault();
-    const comments = event.target.commentInput.value;
-    if (comments !== "") {
-      axios
-        .post(`/videos/${this.state.mainVideoId}`, {
-          comment: comments,
-          name: "Daniel Kim"
-        })
-        .then(response => {
-          this.getMainVideo();
-        });
-      event.target.reset();
-    } else {
-      window.alert("Please type comments");
-    }
+  likesHandler = () => {
+    axios.put(`/videos/${this.state.mainVideoId}/likes`).then(response => {
+      const mainVideo = response.data[0];
+      this.setState({ mainVideo });
+      this.setState({ commentCount: mainVideo.comments.length });
+      this.setState({ comments: mainVideo.comments });
+    });
   };
 
   render() {
@@ -93,12 +82,17 @@ class App extends Component {
                   </div>
                   <div className="desktop-view">
                     <div className="desktop-view__left">
-                      <VideoInfo mainVideo={this.state.mainVideo} />
+                      <VideoInfo
+                        mainVideo={this.state.mainVideo}
+                        likesHandler={this.likesHandler}
+                      />
                       <Conversation
+                        getMainVideo={this.getMainVideo}
+                        mainVideoId={this.state.mainVideoId}
                         commentCount={this.state.commentCount}
-                        onSubmit={this.eventHandler}
                       />
                       <Comments
+                        getMainVideo={this.getMainVideo}
                         comments={this.state.comments}
                         mainVideoId={this.state.mainVideoId}
                         deleteHandler={this.getMainVideo}
@@ -130,12 +124,17 @@ class App extends Component {
                   </div>
                   <div className="desktop-view">
                     <div className="desktop-view__left">
-                      <VideoInfo mainVideo={this.state.mainVideo} />
+                      <VideoInfo
+                        mainVideo={this.state.mainVideo}
+                        likesHandler={this.likesHandler}
+                      />
                       <Conversation
+                        getMainVideo={this.getMainVideo}
+                        mainVideoId={this.state.mainVideoId}
                         commentCount={this.state.commentCount}
-                        onSubmit={this.eventHandler}
                       />
                       <Comments
+                        getMainVideo={this.getMainVideo}
                         comments={this.state.comments}
                         mainVideoId={this.state.mainVideoId}
                         deleteHandler={this.getMainVideo}
