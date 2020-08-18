@@ -19,14 +19,12 @@ class App extends Component {
     mainVideo: {},
     commentCount: 0,
     comments: [],
-    mainVideoId: $homeKey
+    mainVideoId: $homeKey,
   };
 
   componentDidMount() {
-    axios.get("/videos/").then(response => {
-      this.setState({ videoList: response.data });
-      this.getMainVideo();
-    });
+    this.getVideoList();
+    this.getMainVideo();
   }
 
   componentDidUpdate(prevProp, prevState) {
@@ -35,8 +33,14 @@ class App extends Component {
     }
   }
 
+  getVideoList = () => {
+    axios.get("/videos/").then((response) => {
+      this.setState({ videoList: response.data });
+    });
+  };
+
   getMainVideo = () => {
-    axios.get(`/videos/${this.state.mainVideoId}`).then(response => {
+    axios.get(`/videos/${this.state.mainVideoId}`).then((response) => {
       const mainVideo = response.data[0];
       this.setState({ mainVideo });
       this.setState({ comments: mainVideo.comments });
@@ -45,7 +49,7 @@ class App extends Component {
   };
 
   likesHandler = () => {
-    axios.put(`/videos/${this.state.mainVideoId}/likes`).then(response => {
+    axios.put(`/videos/${this.state.mainVideoId}/likes`).then((response) => {
       this.getMainVideo();
     });
   };
@@ -60,14 +64,17 @@ class App extends Component {
             render={() => {
               return (
                 <main>
-                  <Upload getMainVideo={this.getMainVideo} />
+                  <Upload
+                    getMainVideo={this.getMainVideo}
+                    getVideoList={this.getVideoList}
+                  />
                 </main>
               );
             }}
           />
           <Route
             path="/:id"
-            render={props => {
+            render={(props) => {
               if (props.match.params.id !== this.state.mainVideoId) {
                 this.setState({ mainVideoId: props.match.params.id });
               }

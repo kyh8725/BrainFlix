@@ -58,7 +58,14 @@ router.get("/videos/:id", (req, res) => {
 router.put("/videos/:videoId/likes", (req, res) => {
   videos.map((video) => {
     if (video.id === req.params.videoId) {
-      video.likes = (Number(video.likes.replace(",", "")) + 1).toLocaleString();
+      if (Number(video.likes) < 1000) {
+        video.likes = (Number(video.likes) + 1).toLocaleString();
+      } else {
+        video.likes = (
+          Number(video.likes.replace(",", "")) + 1
+        ).toLocaleString();
+      }
+
       helper.writeJSONFile(videoFile, videos);
       res.json(videos);
     }

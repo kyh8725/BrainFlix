@@ -4,7 +4,7 @@ import axios from "axios";
 import uploadImage from "../assets/Images/Upload-video-preview.jpg";
 
 export default function upload(props) {
-  const uploadHandler = event => {
+  const uploadHandler = (event) => {
     event.preventDefault();
 
     if (event.target.name === "cancel") {
@@ -17,9 +17,10 @@ export default function upload(props) {
           .post(`/videos/`, {
             title: title,
             description: description,
-            image: uploadImage
+            image: uploadImage,
           })
-          .then(response => {
+          .then((response) => {
+            props.getVideoList();
             props.getMainVideo();
           });
         event.target.reset();
